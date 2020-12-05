@@ -5,41 +5,22 @@ Link: https://adventofcode.com/2020/day/5#part2
 INPUT = open('day5_input.txt', 'r', encoding='utf-8').read()
 PASSES = INPUT.splitlines()
 
-
 class Evaluate():
 
     @classmethod
     def get_row(cls, bd_pass: str) -> int:
         '''Calculates what row a boarding pass is for.'''
-        row1, row2 = (0, 127)
-
-        for i in range(7):
-            if bd_pass[i] == 'F':
-                row2 = (row1 + row2) // 2
-
-            else:
-                row1 = int((row1 + row2) / 2)
-
-        return min((row1, row2))
+        return int(bd_pass[:7].replace('F', '0').replace('B', '1'), 2)
 
     @classmethod
     def get_column(cls, bd_pass: str) -> int:
         '''Calculates what column a boarding pass is for.'''
-        col1, col2 = (0, 7)
-
-        for i in range(7, 10):
-            if bd_pass[i] == 'L':
-                col2 = (col1 + col2) // 2
-
-            else:
-                col1 = round((col1 + col2) / 2)
-
-        return max((col1, col2))
+        return int(bd_pass[7:].replace('L', '0').replace('R', '1'), 2)
 
     @classmethod
-    def get_seat(self, lst: list) -> int:
+    def get_seat(self, lst: list) -> [int, list]:
         '''Calculates your seat ID'''
-        return sorted(set(range(lst[0], lst[-1])) - set(lst)) 
+        return ' '.join(map(str, [i for i in range(min(lst), max(lst)) if i not in lst]))
 
     def get_id(self, bd_pass: str) -> int:
         '''Calculates the unique seat ID.'''

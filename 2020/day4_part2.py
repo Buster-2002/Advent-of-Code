@@ -35,11 +35,13 @@ class Evaluate():
         '''
         return hgt.endswith('cm') and 150 <= int(hgt[:-2]) <= 193 or hgt.endswith('in') and 59 <= int(hgt[:-2]) <= 76
 
-    def check_hcl(self, hcl: str) -> bool:
+    @classmethod
+    def check_hcl(cls, hcl: str) -> bool:
         '''Checks if a # followed by exactly six characters 0-9 or a-f.'''
         return hcl.startswith('#') and len(hcl[1:]) == 6 and all(char in CHARS for char in hcl[1:])
 
-    def check_ecl(self, ecl: str) -> bool:
+    @classmethod
+    def check_ecl(cls, ecl: str) -> bool:
         '''Checks if exactly one of: amb blu brn gry grn hzl oth.'''
         return ecl in EYE_COLOURS
 
@@ -54,8 +56,7 @@ class Evaluate():
 
     def dispatch(self, key: str, value: str) -> bool:
         '''Dispatches a corresponding function based on the passports key.'''
-        method = getattr(self, ('check_' + key))
-        return method(value)
+        return getattr(self, ('check_' + key))(value)
 
     def execute(self):
         '''Will calculate how many passports meet the requirements.'''
