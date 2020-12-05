@@ -10,6 +10,7 @@ class Evaluate():
         self.passports = [dict([tuple(i.split(':', maxsplit=1)) for i in l]) for l in list(map(lambda x: x.split(), INPUT.split('\n\n')))]
         self.chars = ('a', 'b', 'c', 'd', 'e', 'f', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
         self.eye_colours = ('amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth')
+        self.required = ('byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid')
 
     @classmethod
     def check_byr(cls, byr: str) -> bool:
@@ -51,18 +52,19 @@ class Evaluate():
         '''Checks if a nine-digit number, including leading zeroes.'''
         return len(pid) == 9 and pid.isdigit()
 
-    def dispatch(self, key: str, value: str):
+    def dispatch(self, key: str, value: str) -> bool:
         '''Dispatches a corresponding function based on the passports key.'''
         method = getattr(self, ('check_' + key))
-        method(value)
+        return method(value)
 
     def execute(self):
         '''Will calculate how many passports meet the requirements.'''
         valid = 0
 
         for passport in self.passports:
-            if all(self.dispatch(k, v) for k, v in passport.items()):
-                valid += 1
+            if all(key in passport.keys() for key in self.required):
+                if all(self.dispatch(k, v) for k, v in passport.items()):
+                    valid += 1
 
         print(f'Answer day 4, part 2: {valid}')
 
