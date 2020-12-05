@@ -3,14 +3,14 @@ Author: Buster
 Link: https://adventofcode.com/2020/day/4#part2
 """
 INPUT = open('day4_input.txt', 'r', encoding='utf-8').read()
+CHARS = ('a', 'b', 'c', 'd', 'e', 'f', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
+EYE_COLOURS = ('amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth')
+REQUIRED = ('byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid')
 
 class Evaluate():
 
     def __init__(self):
         self.passports = [dict([tuple(i.split(':', maxsplit=1)) for i in l]) for l in list(map(lambda x: x.split(), INPUT.split('\n\n')))]
-        self.chars = ('a', 'b', 'c', 'd', 'e', 'f', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
-        self.eye_colours = ('amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth')
-        self.required = ('byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid')
 
     @classmethod
     def check_byr(cls, byr: str) -> bool:
@@ -37,11 +37,11 @@ class Evaluate():
 
     def check_hcl(self, hcl: str) -> bool:
         '''Checks if a # followed by exactly six characters 0-9 or a-f.'''
-        return hcl.startswith('#') and len(hcl[1:]) == 6 and all([char in self.chars for char in hcl[1:]])
+        return hcl.startswith('#') and len(hcl[1:]) == 6 and all(char in CHARS for char in hcl[1:])
 
     def check_ecl(self, ecl: str) -> bool:
         '''Checks if exactly one of: amb blu brn gry grn hzl oth.'''
-        return ecl in self.eye_colours
+        return ecl in EYE_COLOURS
 
     @classmethod
     def check_cid(cls, _: str) -> bool:
@@ -62,7 +62,7 @@ class Evaluate():
         valid = 0
 
         for passport in self.passports:
-            if all(key in passport.keys() for key in self.required):
+            if all(key in passport.keys() for key in REQUIRED):
                 if all(self.dispatch(k, v) for k, v in passport.items()):
                     valid += 1
 
