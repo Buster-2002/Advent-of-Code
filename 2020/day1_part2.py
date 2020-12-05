@@ -1,4 +1,3 @@
-  
 """
 Author: Buster
 Link: https://adventofcode.com/2020/day/1#part2
@@ -18,4 +17,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-    
