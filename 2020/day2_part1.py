@@ -6,6 +6,7 @@ INPUT = open('day2_input.txt', 'r', encoding='utf-8').read()
 
 def main():
     correct = 0
+
     for combo in INPUT.splitlines():
         combo = combo.split()
         _range = list(map(int, combo[0].replace('-', ' ').split()[0:2]))

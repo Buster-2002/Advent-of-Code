@@ -3,9 +3,9 @@ Author: Buster
 Link: https://adventofcode.com/2020/day/4#part2
 """
 INPUT = open('day4_input.txt', 'r', encoding='utf-8').read()
-CHARS = ('a', 'b', 'c', 'd', 'e', 'f', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
-EYE_COLOURS = ('amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth')
-REQUIRED = ('byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid')
+CHARS = 'a', 'b', 'c', 'd', 'e', 'f', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'
+EYE_COLOURS = 'amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'
+REQUIRED = 'byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid'
 
 class Evaluate():
 
@@ -46,13 +46,14 @@ class Evaluate():
         return ecl in EYE_COLOURS
 
     @classmethod
-    def check_cid(cls, _: str) -> bool:
+    def check_cid(cls, _: str) -> True:
+        '''Always returns true due to being optional.'''
         return True
 
     @classmethod
     def check_pid(cls, pid: str) -> bool:
         '''Checks if a nine-digit number, including leading zeroes.'''
-        return len(pid) == 9 and pid.isdigit()
+        return len(pid) == 9 and pid.isdigit() # digit check not necessary
 
     def dispatch(self, key: str, value: str) -> bool:
         '''Dispatches a corresponding function based on the passports key.'''

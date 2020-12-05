@@ -12,6 +12,7 @@ def enumerate2(iterator, start, step):
 
 def main():
     hit = 0
+
     for i, line in enumerate2(GRID, 0, 3):
         if line[i] == '#':
             hit += 1
