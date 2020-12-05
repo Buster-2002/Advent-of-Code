@@ -5,6 +5,7 @@ Link: https://adventofcode.com/2020/day/5#part2
 INPUT = open('day5_input.txt', 'r', encoding='utf-8').read()
 PASSES = INPUT.splitlines()
 
+
 class Evaluate():
 
     @classmethod

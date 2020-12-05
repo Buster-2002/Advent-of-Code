@@ -41,11 +41,7 @@ class Evaluate():
 
     def execute(self) -> int:
         '''Calculates what the highest seat ID of the input is.'''
-        bd_pass_ids = []
-
-        for bd_pass in PASSES:
-            bd_pass_ids.append(self.get_id(bd_pass))
-
+        bd_pass_ids = [self.get_id(bd_pass) for bd_pass in PASSES]
         print(f'Answer day 5, part 1: {max(bd_pass_ids)}')
 
 if __name__ == '__main__':
