@@ -8,30 +8,22 @@ BAGS = {bag[0]: bag[1:] for bag in list(list(map(str.strip, l)) for l in map(lam
 
 class Evaluate():
 
-    @classmethod
-    def get_amount(cls, bag: str) -> int:
+    def get_amount(self, bag: (tuple, [list])) -> int:
         '''Returns the amount of shiny gold bags a bag can eventually hold'''
-        golden = 0
+        if bag[0] == 'shiny gold':
+            return 1
 
-        def recurse(_bag):
-            for sub_bag in _bag:
-                if sub_bag == 'shiny gold':
-                    golden += 1
-                    break
-
-                recurse(BAGS.get(sub_bag))
-
-        return golden
+        return 1 if any(self.get_amount(b) for b in bag[1:]) else 0
 
     def execute(self) -> int:
         '''Prints the sum of bag colours that can eventually hold at least 1 shiny gold bag'''
         total = 0
 
-        for bag in BAGS:
+        for bag in BAGS.items():
             total += self.get_amount(bag)
 
-        print(f'Answer day 7, part 1: {total}')
-    
+        return total
+
 if __name__ == '__main__':
     evaluator = Evaluate()
-    evaluator.execute()
+    print(f'Answer day 7, part 1: {evaluator.execute()}')
