@@ -8,7 +8,7 @@ BAGS = {bag[0]: bag[1:] for bag in list(list(map(str.strip, l)) for l in map(lam
 
 class Evaluate():
 
-    def get_amount(self, bag: (tuple, [list])) -> int:
+    def get_amount(self, bag: tuple(str, [list])) -> int:
         '''Returns the amount of shiny gold bags a bag can eventually hold'''
         if bag[0] == 'shiny gold':
             return 1
