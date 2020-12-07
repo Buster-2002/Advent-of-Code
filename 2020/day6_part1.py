@@ -15,7 +15,7 @@ class Evaluate():
         return len(set(group))
 
     def execute(self) -> int:
-        '''Returns the sum of the amount of unique yes answers for each group'''
+        '''Prints the sum of the amount of unique yes answers for each group'''
         total = 0
 
         for group in GROUPS:
