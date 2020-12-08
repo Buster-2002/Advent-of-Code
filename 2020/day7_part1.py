@@ -11,7 +11,7 @@ BAGS = {bag[0]: bag[1:] for bag in list(list(map(str.strip, l)) for l in map(lam
 
 class Evaluate():
 
-    def get_amount(self, bag: str) -> int:
+    def get_amount(self, bag: (str, [list])) -> int:
         '''Returns the amount of shiny gold bags a bag can eventually hold'''
         if 'no other' in BAGS[bag]:
             return False
