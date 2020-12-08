@@ -51,14 +51,14 @@ class Evaluate():
         for l in instructions:
             opcode = new_code[l]['opcode']
 
-            if opcode != 'acc':
+            if opcode == 'jmp':
                 opcode = self.opposite(opcode)
                 new_code[l].update({
                     'opcode': opcode
                 })
                 acc, instructs = self.run(new_code)
 
-                if instructs[-1] >= len(DEFAULT_CODE):
+                if instructs[-1] == len(DEFAULT_CODE):
                     return acc
 
                 new_code[l].update({
