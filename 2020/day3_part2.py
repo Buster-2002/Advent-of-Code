@@ -1,6 +1,9 @@
+#!/usr/bin/env python3
 """
 Author: Buster
 Link: https://adventofcode.com/2020/day/3#part2
+Question: What do you get if you multiply together the number of trees encountered on each of the listed slopes?
+Answer: 3584591857
 """
 INPUT = open('day3_input.txt', 'r', encoding='utf-8').read()
 GRID = [(list(line) * 73) for line in INPUT.splitlines()]

@@ -1,6 +1,9 @@
+#!/usr/bin/env python3
 """
 Author: Buster
 Link: https://adventofcode.com/2020/day/6#part2
+Question: For each group, count the number of questions to which everyone answered "yes". What is the sum of those counts?
+Answer: 3193
 """
 INPUT = open('day6_input.txt', 'r', encoding='utf-8').read()
 GROUPS = list(map(lambda x: x.split('\n'), INPUT.strip().split('\n\n')))
@@ -21,8 +24,8 @@ class Evaluate():
         for group in GROUPS:
             total += self.get_unique(group)
 
-        print(f'Answer day 6, part 2: {total}')
+        return total
 
 if __name__ == '__main__':
     evaluator = Evaluate()
-    evaluator.execute()
+    print(f'Answer day 6, part 2: {evaluator.execute()}')

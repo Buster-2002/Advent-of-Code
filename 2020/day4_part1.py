@@ -1,6 +1,9 @@
+#!/usr/bin/env python3
 """
 Author: Buster
 Link: https://adventofcode.com/2020/day/4#part1
+Question: Count the number of valid passports - those that have all required fields. Treat cid as optional. In your batch file, how many passports are valid?
+Answer: 190
 """
 INPUT = open('day4_input.txt', 'r', encoding='utf-8').read()
 PASSPORTS = [dict([tuple(i.split(':', maxsplit=1)) for i in l]) for l in list(map(lambda x: x.split(), INPUT.split('\n\n')))]

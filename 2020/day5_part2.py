@@ -1,6 +1,9 @@
+#!/usr/bin/env python3
 """
 Author: Buster
 Link: https://adventofcode.com/2020/day/5#part2
+Question: What is the ID of your seat?
+Answer: 699
 """
 INPUT = open('day5_input.txt', 'r', encoding='utf-8').read()
 PASSES = INPUT.splitlines()
@@ -28,9 +31,13 @@ class Evaluate():
 
     def execute(self) -> int:
         '''Calculates what the highest seat ID of the input is.'''
-        bd_pass_ids = [self.get_id(bd_pass) for bd_pass in PASSES]
-        print(f'Answer day 5, part 2: {self.get_seat(bd_pass_ids)}')
+        bd_pass_ids = []
+        
+        for bd_pass in PASSES:
+            bd_pass_ids.append(self.get_id(bd_pass))
+
+        return self.get_seat(bd_pass_ids)
 
 if __name__ == '__main__':
     evaluator = Evaluate()
-    evaluator.execute()
+    print(f'Answer day 5, part 2: {evaluator.execute()}')

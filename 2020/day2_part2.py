@@ -1,7 +1,9 @@
-  
+#!/usr/bin/env python3 
 """
 Author: Buster
 Link: https://adventofcode.com/2020/day/2#part2
+Question: How many passwords are valid according to the new interpretation of the policies?
+Answer: 673
 """
 INPUT = open('day2_input.txt', 'r', encoding='utf-8').read()
 

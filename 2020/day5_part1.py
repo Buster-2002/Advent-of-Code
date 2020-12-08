@@ -1,6 +1,9 @@
+#!/usr/bin/env python3
 """
 Author: Buster
 Link: https://adventofcode.com/2020/day/5#part1
+Question: As a sanity check, look through your list of boarding passes. What is the highest seat ID on a boarding pass?
+Answer: 915
 """
 INPUT = open('day5_input.txt', 'r', encoding='utf-8').read()
 PASSES = INPUT.splitlines()
@@ -25,9 +28,13 @@ class Evaluate():
 
     def execute(self) -> int:
         '''Calculates what the highest seat ID of the input is.'''
-        bd_pass_ids = [self.get_id(bd_pass) for bd_pass in PASSES]
-        print(f'Answer day 5, part 1: {max(bd_pass_ids)}')
+        bd_pass_ids = []
+        
+        for bd_pass in PASSES:
+            bd_pass_ids.append(self.get_id(bd_pass))
+
+        return max(bd_pass_ids)
 
 if __name__ == '__main__':
     evaluator = Evaluate()
-    evaluator.execute()
+    print(f'Answer day 5, part 1: {evaluator.execute()}')
