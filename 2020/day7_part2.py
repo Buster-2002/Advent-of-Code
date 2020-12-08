@@ -3,16 +3,18 @@
 Author: Buster
 Link: https://adventofcode.com/2020/day/7#part2
 Question: How many individual bags are required inside your single shiny gold bag?
-Answer: 
+Answer: 58175
 """
+import re
+
 INPUT = open('day7_input.txt', 'r', encoding='utf-8').read()
-BAGS = {bag[0]: bag[1:] for bag in list(list(map(str.strip, l)) for l in map(lambda x: x.split(','), INPUT.replace('bags contain', ',').replace('bags', '').replace('bag', '').replace('.', '').translate(str.maketrans('', '', '0123456789')).splitlines()))}
+BAGS = {line[0]: {part[1]: int(part[0]) for part in line[1]} for line in [(re.match(r'(\w+ \w+) bags contain', line)[1], re.findall(r'(\d) (\w+ \w+) bag', line)) for line in INPUT.splitlines()]}
 
-class Evaluate():
+def main():
+    def count_bags(bag):
+        return sum(count_bags(bag) * amt for bag, amt in BAGS[bag].items()) + 1
 
-    def execute(self):
-        pass
+    return count_bags('shiny gold') - 1
 
 if __name__ == '__main__':
-    evaluator = Evaluate()
-    print(f'Answer day 7, part 2: {evaluator.execute()}')
+    print(f"Answer day 7, part 2: {main()}")
