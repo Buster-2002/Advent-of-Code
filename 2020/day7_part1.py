@@ -8,21 +8,24 @@ BAGS = {bag[0]: bag[1:] for bag in list(list(map(str.strip, l)) for l in map(lam
 
 class Evaluate():
 
-    def get_amount(self, bag: (tuple, [list])) -> int:
+    def get_amount(self, bag: str) -> int:
         '''Returns the amount of shiny gold bags a bag can eventually hold'''
-        if bag[0] == 'shiny gold':
-            return 1
+        if 'no other' in BAGS[bag]:
+            return False
 
-        return 1 if any(self.get_amount(b) for b in bag[1:]) else 0
+        if 'shiny gold' in BAGS[bag]:
+            return True
+
+        return any(self.get_amount(b) for b in BAGS[bag])
 
     def execute(self) -> int:
         '''Prints the sum of bag colours that can eventually hold at least 1 shiny gold bag'''
-        total = 0
+        total = []
 
-        for bag in BAGS.items():
-            total += self.get_amount(bag)
+        for bag in BAGS:
+            total.append(self.get_amount(bag))
 
-        return total
+        return sum(total)
 
 if __name__ == '__main__':
     evaluator = Evaluate()
