@@ -3,7 +3,7 @@
 Author: Buster
 Link: https://adventofcode.com/2020/day/7#part1
 Question: How many bag colors can eventually contain at least one shiny gold bag?
-Answer: 126
+Answer: 139
 """
 INPUT = open('day7_input.txt', 'r', encoding='utf-8').read()
 # this might be the stupidest way to do this but ok

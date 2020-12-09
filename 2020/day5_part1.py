@@ -8,7 +8,7 @@ Answer: 915
 INPUT = open('day5_input.txt', 'r', encoding='utf-8').read()
 PASSES = INPUT.splitlines()
 
-print(*(map(lambda r,c:r*8+c,*zip(max((int(p[:7].replace('F','0').replace('B','1'), 2),int(p[7:].replace('L','0').replace('R','1'), 2))for p in open('day5_input.txt').readlines()))))) # golf
+[print(r*8+c)for r,c in[max((int(p[:7].replace('F','0').replace('B','1'),2),int(p[7:].replace('L','0').replace('R','1'),2))for p in open('day5_input.txt').readlines())]] # golf
 
 class Evaluate():
 
