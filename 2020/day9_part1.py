@@ -2,7 +2,7 @@
 """
 Author: Buster
 Link: https://adventofcode.com/2020/day/9#part1
-Question: 
+Question: What is the first number that does not have the sum of 2 of the previous 25 numbers as the next in line?
 Answer: 
 """
 INPUT = open('day9_input.txt', 'r', encoding='utf-8').read()
