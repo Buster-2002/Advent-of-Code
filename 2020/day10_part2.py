@@ -2,8 +2,8 @@
 """
 Author: Buster
 Link: https://adventofcode.com/2020/day/10#part2
-Question: 
-Answer: 
+Question: What is the total number of distinct ways you can arrange the adapters to connect the charging outlet to your device?
+Answer: 28346956187648
 """
 INPUT = open('day10_input.txt', 'r', encoding='utf-8').read()
 ADAPTERS = sorted(map(int, INPUT.splitlines()))
