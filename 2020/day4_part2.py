@@ -7,7 +7,6 @@ Answer: 121
 """
 INPUT = open('day4_input.txt', 'r', encoding='utf-8').read()
 CHARS = 'a', 'b', 'c', 'd', 'e', 'f', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'
-EYE_COLOURS = 'amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'
 REQUIRED = 'byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid'
 
 class Evaluate():
@@ -46,12 +45,7 @@ class Evaluate():
     @classmethod
     def check_ecl(cls, ecl: str) -> bool:
         '''Checks if exactly one of: amb blu brn gry grn hzl oth.'''
-        return ecl in EYE_COLOURS
-
-    @classmethod
-    def check_cid(cls, _: str) -> True:
-        '''Always returns true due to being optional.'''
-        return True
+        return ecl in ('amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth')
 
     @classmethod
     def check_pid(cls, pid: str) -> bool:
@@ -60,7 +54,7 @@ class Evaluate():
 
     def dispatch(self, key: str, value: str) -> bool:
         '''Dispatches a corresponding function based on the passports key.'''
-        return getattr(self, ('check_' + key))(value)
+        return getattr(self, ('check_' + key), lambda _: True)(value)
 
     def execute(self):
         '''Will calculate how many passports meet the requirements.'''

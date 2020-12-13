@@ -6,7 +6,6 @@ Question: How many bag colors can eventually contain at least one shiny gold bag
 Answer: 139
 """
 INPUT = open('day7_input.txt', 'r', encoding='utf-8').read()
-# this might be the stupidest way to do this but ok
 BAGS = {bag[0]: bag[1:] for bag in list(list(map(str.strip, l)) for l in map(lambda x: x.split(','), INPUT.replace('bags contain', ',').replace('bags', '').replace('bag', '').replace('.', '').translate(str.maketrans('', '', '0123456789')).splitlines()))}
 
 class Evaluate():

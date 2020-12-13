@@ -27,8 +27,7 @@ def main() -> int:
                 step += 1
 
         else:
-            return acc, instructs
+            return acc
 
 if __name__ == '__main__':
-    var, var1 = main()
     print(f'Answer day 8, part 1: {main()}')

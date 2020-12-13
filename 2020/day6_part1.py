@@ -8,7 +8,7 @@ Answer: 6310
 INPUT = open('day6_input.txt', 'r', encoding='utf-8').read()
 GROUPS = list(map(lambda x: x.replace('\n', ''), INPUT.strip().split('\n\n')))
 
-print(sum(len(set(g))for g in map(lambda x:x.replace('\n', ''),open('day6_input.txt').read().split('\n\n')))) # golf
+print(sum(len(set(g))for g in map(lambda x:x.replace('\n',''),open('day6_input.txt').read().split('\n\n')))) # golf
 
 class Evaluate():
 
