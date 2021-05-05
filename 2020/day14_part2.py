@@ -5,7 +5,7 @@ Link: https://adventofcode.com/2020/day/14#part2
 Question: 
 Answer: 
 """
-INPUT = open('day14_input.txt', 'r', encoding='utf-8').read()
+INPUT = open('day14_input.txt', encoding='utf-8').read()
 
 class Evaluate():
 

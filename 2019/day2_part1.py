@@ -2,7 +2,7 @@
 Author: Buster
 Link: https://adventofcode.com/2019/day/2#part1
 """
-INPUT = open('day2_input.txt', 'r', encoding='utf-8').read()
+INPUT = open('day2_input.txt', encoding='utf-8').read()
 INTEGERS = list(map(int, INPUT.split(',')))
 
 def main():

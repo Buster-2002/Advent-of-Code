@@ -9,7 +9,7 @@ Link: https://adventofcode.com/2020/day/{day}#part{part}
 Question: 
 Answer: 
 \"\"\"
-INPUT = open('day{day}_input.txt', 'r', encoding='utf-8').read()
+INPUT = open('day{day}_input.txt', encoding='utf-8').read()
 
 class Evaluate():
 

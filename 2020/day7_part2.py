@@ -7,14 +7,20 @@ Answer: 58175
 """
 import re
 
-INPUT = open('day7_input.txt', 'r', encoding='utf-8').read()
-BAGS = {line[0]: {part[1]: int(part[0]) for part in line[1]} for line in [(re.match(r'(\w+ \w+) bags contain', line)[1], re.findall(r'(\d) (\w+ \w+) bag', line)) for line in INPUT.splitlines()]}
+INPUT = open('day7_input.txt', encoding='utf-8').read()
+BAGS = {
+    line[0]: {part[1]: int(part[0]) for part in line[1]}
+    for line in [(re.match(r'(\w+ \w+) bags contain', line)[1], re.findall(r'(\d) (\w+ \w+) bag', line))
+    for line in INPUT.splitlines()]
+}
 
-def main():
+def main() -> int:
     def count_bags(bag):
+        print(type(bag))
         return sum(count_bags(bag) * amt for bag, amt in BAGS[bag].items()) + 1
 
     return count_bags('shiny gold') - 1
 
 if __name__ == '__main__':
-    print(f"Answer day 7, part 2: {main()}")
+    result = main()
+    print(f"Answer day 7, part 2: {result}")

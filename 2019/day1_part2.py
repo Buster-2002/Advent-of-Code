@@ -2,7 +2,7 @@
 Author: Buster
 Link: https://adventofcode.com/2019/day/1#part2
 """
-INPUT = open('day1_input.txt', 'r', encoding='utf-8').read()
+INPUT = open('day1_input.txt', encoding='utf-8').read()
 MASSES = INPUT.splitlines()
 
 def main():
